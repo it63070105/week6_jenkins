@@ -14,5 +14,32 @@ pipeline {
                 sh 'python3  Webhook/main.py'
             }
         }
+        stage('test') {
+            steps {
+                sh 'echo Test'
+            }
+        }
+        stage('deploy') {
+            steps {
+                sh 'echo Deploying build'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Always'
+        }
+        success {
+            echo 'SUCCESS'
+        }
+        failure {
+            echo 'Failure'
+        }
+        unstable {
+            echo 'Run is unstable'
+        }
+        changed {
+            echo 'Status changed'
+        }
     }
 }
